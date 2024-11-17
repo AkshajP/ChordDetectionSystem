@@ -4,7 +4,7 @@ import tempfile
 import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from running_inference import infer_chords, format_time
+from better_running_inference import infer_chords, format_time
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='frontend/build')

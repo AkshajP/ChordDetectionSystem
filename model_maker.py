@@ -5,7 +5,7 @@ from tensorflow.keras.optimizers import Adam
 import os
 import numpy as np
 
-inputshape = 30 # 12 for pcp, 30 for mfcc
+inputshape = 12 # 12 for pcp, 30 for mfcc
 def parse_file(content):
     x_data=[]
     y_data=[]
@@ -47,7 +47,7 @@ def create_ffnn_model():
     """
     
     model = Sequential([
-        InputLayer(shape=(inputshape,)),
+        InputLayer(input_shape=(inputshape,)),
 
         Dense(inputshape*2, activation='relu'),
         BatchNormalization(),
