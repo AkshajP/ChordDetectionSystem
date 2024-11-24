@@ -6,21 +6,25 @@ A web application that detects and visualizes chord progressions in audio files 
 
 ```
 chord-detection/
-├── frontend/                 # React frontend
+├── frontend/                       # React frontend
 │   ├── src/
-│   │   ├── components/      # React components
+│   │   ├── components/             # React components
 │   │   │   └── ChordPlayer.js
 │   │   ├── App.js
 │   │   ├── index.js
 │   │   └── index.css
 │   ├── package.json
 │   └── tailwind.config.js
-├── app.py                    # Flask backend server
-├── model_maker.py           # ML model creation
-├── pcp_module.py           # PCP vector generation
-├── running_inference.py    # Inference pipeline
-├── dataset preprocessor.ipynb # Convert audio to PCP
-└── requirements.txt        # Python dependencies
+├── app.py                          # Flask backend server
+├── better_onset.py                 # an improvement over the librosa beat track for no instrument audio segments
+├── better_running_inference.py     # infer chords using the better onset logic with pcp model
+├── model_maker.py                  # training code for pcp model
+├── pcp_module.py                   # PCP vector generation
+├── robust_betteronset_inference    # infer chords using the better onset logic and robust model
+├── robust_model_maker.py           # training code for robust model
+├── running_inference.py            # Inference pipeline
+├── dataset preprocessor.ipynb      # Convert audio to PCP
+└── requirements.txt                # Python dependencies
 ```
 
 ## Setup
@@ -45,6 +49,8 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+
+#### To choose between pcp and robust model comment or uncomment lines 30-33 in `app.py`
 
 ### Frontend
 

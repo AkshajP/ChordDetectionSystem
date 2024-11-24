@@ -4,7 +4,8 @@ import tempfile
 import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from better_running_inference import infer_chords, format_time
+from better_running_inference import infer_chords as infer_pcp_chords
+from robust_betteronset_inference import infer_chords as infer_robust_chords
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='frontend/build')
@@ -24,9 +25,12 @@ def process_audio():
         temp_path = os.path.join(temp_dir, "temp_audio.mp3")
         file.save(temp_path)
         
-        # Process the audio file
-        model_weights_path = "pcpmodel_1000_regular_learning.h5"
-        chord_segments = infer_chords(temp_path, model_weights_path)
+        '''comment out the process required'''
+
+        model_weights_path = "models/robust_model_80_20_split.h5"
+        #model_weights_path = "models/pcp_model_80_20_split.h5"
+        #chord_segments = infer_pcp_chords(temp_path, model_weights_path)
+        chord_segments = infer_robust_chords(temp_path, model_weights_path)
         
         # Format the results for frontend
         results = [

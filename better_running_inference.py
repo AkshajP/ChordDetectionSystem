@@ -241,7 +241,7 @@ def format_time(seconds):
 
 if __name__ == "__main__":
     audio_file = "infer3.mp3"
-    model_weights_path = "models/pcpmodel_1000.h5"
+    model_weights_path = "pcpmodel_1000_regular_learning.h5"
     
     # Run inference
     chord_segments = infer_chords(audio_file, model_weights_path)

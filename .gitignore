@@ -47,7 +47,6 @@ frontend/yarn-error.log*
 .DS_Store
 
 # Model files
-*.h5
 *.hdf5
 *.pkl
 
